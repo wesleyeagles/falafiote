@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300&display=swap');
+
+
+
+
+.container {
+
+  height: 10em;
+    position: relative
+}
+h1 {
+	text-align: center;
+  margin: 0;
+    background: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+   
+    
+    
+}
+.cursor:after {
+	position: absolute;
+	content: " ";
+	height: 30px;
+	width: 5px;
+	background-color: black;
+	
+	animation: blink 0.7s ease-in-out infinite; 
+}
+
+@keyframes blink {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+</style>
+<body>
+
+    
+
+
+
+<div class="container">
+  <h1><span id="write"></span><span class="cursor"></span></h1>
+</div>
+
+      <script>
+        var wrote = document.getElementById('write');
+function write(elem, str, duration) {
+	var elem = elem;
+	var length = str.length	
+	var ms = (duration*1500)/length;
+	var currStr = "";
+	var i = 0;
+	var int = setInterval(type, ms);
+	console.log(currStr);
+	function type() {
+		currStr += str[i]
+		elem.innerHTML = currStr
+		
+		i += 1;
+		if (i === length) {
+			setTimeout(function() { elem.innerHTML = currStr + "<br />"}, 2000);
+			clearInterval(int);
+		}
+	}
+}
+
+setTimeout(write(wrote, "Fala Fiote " + "De Buenas " + "Só nos compiuter", 2), 1000);
+
+      </script>
+      
+    
+</body>
+</html>
